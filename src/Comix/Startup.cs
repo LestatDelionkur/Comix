@@ -80,6 +80,8 @@ namespace Comix
                     {
                         serviceScope.ServiceProvider.GetService<ComixDbContext>()
                              .Database.Migrate();
+
+                        serviceScope.ServiceProvider.GetService<ComixDbContext>().EnsureSeedData();
                     }
                 }
                 catch { }

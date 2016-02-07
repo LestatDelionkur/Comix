@@ -6,6 +6,8 @@
         public Comics Comics { get; set; }
         public long PersonId { get; set; }
         public Person Person { get; set; }
+        public long PersonTypeId { get; set; }
+        public PersonType PersonType { get; set; }
          
     }
 }
