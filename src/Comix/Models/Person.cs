@@ -1,10 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Comix.Models
 {
-    public class Person:ExtendedEntity
+    public class Person : Entity
     {
-        public virtual ICollection<ComicsPerson> ComicsPersons { get; set; } 
-         
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
+        [Display(Name = "Описание")]
+        public string Description { get; set; }
+
+        public virtual ICollection<ComicsPerson> ComicsPersons { get; set; }
+
     }
 }
