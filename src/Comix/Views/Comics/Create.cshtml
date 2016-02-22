@@ -1,57 +1,49 @@
-@model Comix.Models.Comics
+@model Comix.ViewModels.Comics.ChapterViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Загрузка комикса";
 }
 
-<h2>Create</h2>
+<script src="~/lib/angular/angular.js"></script>
+<script src="~/js/controllers.js"></script>
 
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Comics</h4>
+<h2>Загрузка комикса</h2>
+
+<form asp-action="Create" ng-app="comicsApp">
+    <div class="form-horizontal"  ng-controller="ComicsListCtrl">
+        <h4>Загрузка комикса</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="ComicKindId" class="col-md-2 control-label"></label>
+
+
+        <div class="form-group  col-md-10">
+            <label asp-for="ComicsKindTitle" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ComicKindId" class="form-control" />
-                <span asp-validation-for="ComicKindId" class="text-danger" />
+                <div class="radio" ng-repeat="comicsKind in comicsKinds">
+                    <label>
+                        <input type="radio" name="optionsRadios" value="{{comicsKind.Id}}" checked>
+                        {{comicsKind.Title}}
+                    </label>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="ComicsType" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="ComicsType" class="form-control"></select>
-                <span asp-validation-for="ComicsType" class="text-danger" />
+        <div class="form-group  col-md-10">
+            <label asp-for="ComicsTitle" class="col-md-2 control-label"></label>
+            <div class="input-group col-md-10">
+                <input type="text" class="form-control input-group-lg" aria-label="..." ng-model="comics.Title">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" ng-model="comics" role="menu">
+                        <li ng-repeat="comics in comicses">{{comics.Title}}</li>
+                    </ul>
+                </div><!-- /btn-group -->
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Edited" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Edited" class="form-control" />
-                <span asp-validation-for="Edited" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ParentComicsId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="ParentComicsId" class ="form-control"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Title" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger" />
-            </div>
-        </div>
+
+     
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

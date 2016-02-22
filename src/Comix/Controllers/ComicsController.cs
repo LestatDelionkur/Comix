@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
@@ -5,7 +7,7 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Comix.Models;
 using Comix.Models.Base;
-
+using Comix.ViewModels.Comics;
 namespace Comix.Controllers
 {
     public class ComicsController : Controller
@@ -122,6 +124,21 @@ namespace Comix.Controllers
             _context.Comicses.Remove(comics);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> ComicsList()
+        {
+            IList< Comics > list=new List<Comics>() { new Comics() {Id = 10,Title = "Avengers"}, new Comics() { Id = 11, Title = "Batman" }};
+
+
+            return Json(list);
+        }
+
+        public async Task<IActionResult> ComicsKindList()
+        {
+            IList<ComicsKind> list = new List<ComicsKind>() { new ComicsKind() { Id = 10, Title = "Manga" }, new ComicsKind() { Id = 11, Title = "Comics" } };
+            return Json(list);
         }
     }
 }
