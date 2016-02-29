@@ -1,17 +1,17 @@
-@model Comix.ViewModels.Comics.ChapterViewModel
+п»ї@model Comix.ViewModels.Comics.ChapterViewModel
 
 @{
-    ViewData["Title"] = "Загрузка комикса";
+    ViewData["Title"] = "Р—Р°РіСЂСѓР·РєР° РєРѕРјРёРєСЃР°";
 }
 
 <script src="~/lib/angular/angular.js"></script>
 <script src="~/js/controllers.js"></script>
 
-<h2>Загрузка комикса</h2>
+<h2>Р—Р°РіСЂСѓР·РєР° РєРѕРјРёРєСЃР°</h2>
 
 <form asp-action="Create" ng-app="comicsApp">
     <div class="form-horizontal"  ng-controller="ComicsListCtrl">
-        <h4>Загрузка комикса</h4>
+      
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
 
@@ -27,26 +27,30 @@
                 </div>
             </div>
         </div>
-        <div class="form-group  col-md-10">
+ 
+        <div class="row  col-md-10">
             <label asp-for="ComicsTitle" class="col-md-2 control-label"></label>
-            <div class="input-group col-md-10">
-                <input type="text" class="form-control input-group-lg" aria-label="..." ng-model="comics.Title">
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right" ng-model="comics" role="menu">
-                        <li ng-repeat="comics in comicses">{{comics.Title}}</li>
-                    </ul>
-                </div><!-- /btn-group -->
+            <div class="col-md-10">
+                <label><input type="text" class="form-control" multiple name="myName" list="names" ng-model="comics.Title"></label>
+                <!-- Рё РіРґРµ-С‚Рѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃР»РµРґСѓСЋС‰РёР№ Р±Р»РѕРє (Рё РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РІРЅСѓС‚СЂРё С„РѕСЂРјС‹)-->
+                <datalist id="names">
+                    <option ng-repeat="comics in comicses" value="{{comics.Title}}" id="{{comics.Id}}"/>
+                </datalist>
             </div>
-        </div>
 
-     
+           
+
+        </div><!-- /.col-lg-6 -->
+
+       
+
+
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                @*<input type="submit" value="Create" class="btn btn-default" />*@
             </div>
         </div>
     </div>
