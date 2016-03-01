@@ -65,6 +65,44 @@ textarea {
         left: 0px;
         top: 10px;
         z-index: 1;
+        width: 1000px;
+        height: 100%;
     }
+    .navbar-collapse {
+        width: 200px !important;
+         height: 100%!important;
+    }
+
+}
+
+
+.collapse {
+  height: auto;
+  width: auto;
+}
+
+
+
+.collapse.width {
+  position: relative;
+  width: 0;
+  overflow: hidden;
+  -webkit-transition: width 0.35s ease;
+  -moz-transition: width 0.35s ease;
+  -o-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+}
+
+.collapse.in.width {
+  width: auto;
+}
+
+.navbar {
+    background-color: transparent !important;
+    border: 0px;
+}
+.navbar-collapse {
+    background-color: #f8f8f8;
+    border: 0px;
 }
 
